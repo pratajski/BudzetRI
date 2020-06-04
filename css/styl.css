@@ -1,0 +1,73 @@
+body
+{
+	font-size: 20px;
+}
+#naglowek
+{
+
+}
+
+
+#okolo_container
+{
+	background-color: white;
+	width: 400px;
+	/*padding: 50px;*/
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+#container 
+{
+	background-color: white;
+	width: 400px;
+	padding: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 100px;
+	-webkit-box-shadow:3px 3px 30px 5px rgba(204,204,204,0.9);
+	-moz-box-shadow:3px 3px 30px 5px rgba(204,204,204,0.9);
+	box-shadow:3px 3px 30px 5px rgba(204,204,204,0.9) ;
+
+
+}
+#tabela
+{
+	border-style: solid;
+	border-color: #666;
+
+}
+#tabela td 
+{
+	border-style: solid;
+	text-align: center;
+	border-color: #666;
+}
+
+
+#prawy
+{
+	border-style: solid;
+	border-color: #D3D3D3;
+
+}
+#prawy td 
+{
+	
+	text-align: right;
+	
+}
+
+
+input, textarea, select
+{
+	width: 400px;
+	background-color: #efefef;
+	color:#666;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	font-size:20px;
+	padding: 10px;
+	box-sizing: border-box;
+}
