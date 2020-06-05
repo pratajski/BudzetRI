@@ -97,11 +97,6 @@ if (!isset($_POST['termin_platnosci'])) {
 
 
 <?php
-echo "POST = ";
-var_dump($_POST);
-echo "<br>";
-echo "GET = ";
-var_dump ($_GET);
 
 if (   (isset($_POST['nazwa_dostawcy']) and ($_POST['nazwa_dostawcy'] != NULL)) 
     and (isset($_POST['kwota_faktury']) and ($_POST['kwota_faktury'] != NULL)) and ($_POST['kwota_faktury'] != 0)
