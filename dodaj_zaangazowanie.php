@@ -121,7 +121,7 @@ echo "Błąd: " . $polaczenie->connect_errno;
     $nr_zaangazowania = htmlentities($nr_zaangazowania, ENT_QUOTES, "utf-8");//czyszczenie opisu ze znaków specjalnych
     $kwota = str_replace(",",".",$_POST['kwota']);
     if ($sql_zaangazowanie = @$polaczenie->query(
-    sprintf("INSERT INTO zaangazowanie (nazwa, opis, poczatek, koniec, dodajacy_zaangazowanie, kwota, paragraf, zamowienie) 
+    sprintf("INSERT INTO zaangazowanie (nazwa_zaangazowania, opis, poczatek, koniec, dodajacy_zaangazowanie, kwota, z_paragraf, zamowienie) 
     VALUES (" 
         . '"' . $nazwa . '", '
         . '"' . $opis . '", '

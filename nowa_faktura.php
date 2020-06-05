@@ -133,7 +133,7 @@ $query  = "insert into zakupy (dostawca, tytul, kwota, numer, zaangazowanie, wpl
     . $_POST['data_wplywu'] . "', '"
     . $_POST['termin_platnosci'] . "', '"
     . $opis . "');";
-$query .= "update zaangazowanie set realizacja = '$zrealizowane' where id='$nr_zaangazowania';";
+$query .= "update zaangazowanie set realizacja = '$zrealizowane' where id_z='$nr_zaangazowania';";
 
     
 $polaczenie->multi_query($query);    
@@ -166,7 +166,7 @@ else
 
 <br />
 
-
+ 
 
 
 

@@ -27,7 +27,7 @@ include ("naglowek.php");
 <br />
 <h1>dodać sortowanie paragrafów</h1>
 <br />
-Lista:<br />
+Wybierz paragraf dla zaangażowania:<br />
 
 <?php
 $szkodnik = $_SESSION['user']; // konto -> login

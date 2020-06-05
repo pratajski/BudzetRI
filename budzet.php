@@ -56,7 +56,7 @@ include ("naglowek.php");
     if (isset ($_POST['rocznik'])) {
     $rok = $_POST['rocznik'];
 }
-    echo "<h1>Środki budżetowe na rok " . $rok . "</h1>";
+    echo "<h1>Środki budżetowe zaplanowane na rok " . $rok . "</h1>";
 ?>
 
 
@@ -69,7 +69,7 @@ require_once ('baza.php');
 $polaczenie = @new mysqli($host, $user, $password, $db);//próba podłączenia do bazy z ignorowaniem komunikatów o błędach
 $wynik = @$polaczenie->query(
       "SELECT * FROM paragrafy LEFT JOIN srodki ON srodki.id_paragrafu = paragrafy.id   
-      where srodki.rok = $rok or srodki.rok is NULL
+      where srodki.rok = $rok
     "); 
 
 if(mysqli_num_rows($wynik) == 0) {
@@ -86,6 +86,9 @@ echo "<tr>";
     
     echo "<td>";
     echo "Nazwa";
+    echo "</td>";
+    echo "<td>";
+    echo "Rok";
     echo "</td>";
     echo "<td>";
     echo "Paragraf";
@@ -111,6 +114,9 @@ foreach($wynik as $linia)
     echo "<tr>";
     echo '<td>';
     echo $linia['nazwa'];
+    echo '</td>';
+    echo '<td>';
+    echo $linia['rok'];
     echo '</td>';
     echo '<td>';
     echo $linia['dzial'] .  "." . $linia['dzial'] . "." . $linia['rozdzial'] .  "." . $linia['paragraf'] .  "." . $linia['punkt'];

@@ -159,14 +159,11 @@ if ($wybor == 'nazwa_m') {
 
 
 $polaczenie = @new mysqli($host, $user, $password, $db);//próba podłączenia do bazy z ignorowaniem komunikatów o błędach
-//$wynik = @$polaczenie->query("SELECT * FROM osoba RIGHT OUTER JOIN projekt ON osoba.id_osoba = projekt.projekt_szef");
+
 $wynik = @$polaczenie->query(
- /*   "SELECT * , ( SELECT CONCAT( imie, ' ', nazwisko ) FROM `osoba` WHERE p.projekt_szef = konto ) AS szef FROM `projekt` p 
-    WHERE poczatek >= date('$d_start') AND koniec <= date('$d_koniec')
-    order by $sortownia $kolejnosc"
-    ); */
-      "SELECT * FROM zaangazowanie 
-    WHERE poczatek >= date('$d_start') AND koniec <= date('$d_koniec')
+    "SELECT * FROM zaangazowanie 
+     LEFT JOIN paragrafy ON zaangazowanie.z_paragraf = paragrafy.id
+    WHERE zaangazowanie.poczatek >= date('$d_start') AND zaangazowanie.koniec <= date('$d_koniec')
     order by $sortownia $kolejnosc"
     ); 
 
@@ -196,7 +193,7 @@ foreach($wynik as $linia)
     
     echo "<tr>";
     echo '<td>';
-    echo ($linia['nazwa']);
+    echo ($linia['nazwa_zaangazowania']);
     echo '</td>';
     echo '<td>';
     echo ($linia['kwota']);
@@ -214,10 +211,10 @@ foreach($wynik as $linia)
     echo ($linia['opis']);    
     echo '</td>';
     echo '<td>';
-    echo ($linia['paragraf']);  
+    echo $linia['dzial'] . "." . $linia['rozdzial'] .  "." . $linia['paragraf'] .  "." . $linia['punkt'];
     echo '</td>';
     echo '<td>';
-    echo "<a href='"."faktury.php". "?nr_zaangazowania=" . $linia['id'] . "&realizacja=" . $linia['realizacja'] . "'>Szczegóły</a>";
+    echo "<a href='"."faktury.php". "?nr_zaangazowania=" . $linia['id_z'] . "&realizacja=" . $linia['realizacja'] . "'>Szczegóły</a>";
     echo '</td>';
 
 echo "</tr>";
