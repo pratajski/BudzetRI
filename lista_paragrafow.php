@@ -92,7 +92,7 @@ echo ($linia['komentarz']);
     echo '</td>';
     
         echo '<td>';
-echo "<a href='"."dodaj_zaangazowanie.php". "?paragraf=" . $linia['id'] . "'>Przejdź</a>";; 
+echo "<a href='"."dodaj_zaangazowanie.php". "?paragraf=" . $linia['id'] . "'>Dodaj zaangażowanie</a>";; 
     echo '</td>';   
     
 

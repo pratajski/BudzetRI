@@ -67,7 +67,7 @@ include ("naglowek.php");
 <br />
 <h1>dodać sortowanie po paragrafie</h1>
 <br />
-Lista:<br />
+Lista zaangażowań:<br />
 <div >
 <table id="lista_zaangazowan">
 

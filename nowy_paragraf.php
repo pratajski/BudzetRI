@@ -79,8 +79,6 @@ if (!isset($_POST['nowy_opis_paragrafu'])) {
 
 
 <?php
-    
-
 if (   (isset($_POST['nowa_nazwa_paragrafu']) and ($_POST['nowa_nazwa_paragrafu'] != NULL)) 
     and (isset($_POST['nowy_dzial_paragrafu']) and ($_POST['nowy_dzial_paragrafu'] != NULL)) 
     and (isset($_POST['nowy_rozdzial_paragrafu']) and ($_POST['nowy_rozdzial_paragrafu'] != NULL)) 
@@ -111,15 +109,14 @@ echo "Błąd: " . $polaczenie->connect_errno;
 //sprawdzenie czy istnieje już dodawany punkt
 $ile_paragrafow = $wynik->num_rows;
 	if ($ile_paragrafow==0) {		
-		$sql_paragraf = "INSERT INTO paragrafy (nazwa, komentarz, dzial, rozdzial, paragraf, punkt, zaplanowane, wydatki) VALUES (" 
-    . "'" . $nazwa . "', " 
+		$sql_paragraf = "INSERT INTO paragrafy (nazwa, komentarz, dzial, rozdzial, paragraf, punkt, dodajacy_paragraf) VALUES (" 
+    . "'" . $nazwa . "', " 	
     . "'".$opis . "', " 
     . "'" . $_POST['nowy_dzial_paragrafu'] . "', " 
     . "'" . $_POST['nowy_rozdzial_paragrafu'] . "', " 
     . "'" . $_POST['nowy_paragraf_paragrafu'] . "', " 
     . "'" . $_POST['nowy_punkt_paragrafu'] . "', " 
-    . "'" . 0 . "', " 
-    . "'" . 0 . "')";
+    . "'" . $_SESSION['user'] . "')";
 
 	if ($polaczenie->query($sql_paragraf) === TRUE) {
 	    echo "Pomyślnie dodano paragraf" . "<br />";

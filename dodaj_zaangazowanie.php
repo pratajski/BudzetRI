@@ -121,42 +121,30 @@ echo "Błąd: " . $polaczenie->connect_errno;
     $nr_zaangazowania = htmlentities($nr_zaangazowania, ENT_QUOTES, "utf-8");//czyszczenie opisu ze znaków specjalnych
     $kwota = str_replace(",",".",$_POST['kwota']);
     if ($sql_zaangazowanie = @$polaczenie->query(
-    sprintf("INSERT INTO zaangazowanie (nazwa_zaangazowania, opis, poczatek, koniec, dodajacy_zaangazowanie, kwota, z_paragraf, zamowienie) 
+    sprintf("INSERT INTO zaangazowanie (nazwa_zaangazowania, opis, poczatek, koniec, kwota, realizacja, z_paragraf, dodajacy_zaangazowanie, zamowienie) 
     VALUES (" 
         . '"' . $nazwa . '", '
         . '"' . $opis . '", '
         . '"' . $_POST['start'] . '", '
         . '"' . $_POST['koniec'] . '", '
-        . '"' . $_SESSION['id'] . '", '
         . '"' . $kwota . '", '
+        . '"' . 0 . '", '
         . '"' . $_GET['paragraf'] . '", '
+        . '"' . $_SESSION['user'] . '", '   
         . '"' . $nr_zaangazowania . '"'
     . ");")))
     {
         header('Location: lista.php');
         //echo 'dodano zaangażowanie';
-    }
+    } 
  //   $sql_zaangazowanie = ; 
 }// koniec elsa z zapytaniem po podłączeniu do bazy
 
 }//koniec ifa sprawdzającego czy są dane nowego zaangazowania
 elseif  (($_POST['nazwa'] == NULL)or ($_POST["opis"]== NULL) or ($_POST["start"]== NULL) or ($_POST["koniec"]== NULL) ) {
 		echo "Podaj wszystkie dane"; 
-        
-        
-        
-   
-
-        
-        
-        
-        
-        
-        
-        
 	}
 elseif  ($_POST['kwota'] <= 0)    {echo "Kwota musi być większa od zera";}
-
 
 }//koniec elsa sprawdzającego "start > koniec"
 
