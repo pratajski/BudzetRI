@@ -140,7 +140,8 @@ $polaczenie->multi_query($query);
     
 
 $polaczenie->close();        
-
+header('Location: lista.php');
+exit();
 
 }// koniec elsa z zapytaniem po podłączeniu do bazy
 
