@@ -214,7 +214,7 @@ foreach($wynik as $linia)
     echo $linia['dzial'] . "." . $linia['rozdzial'] .  "." . $linia['paragraf'] .  "." . $linia['punkt'];
     echo '</td>';
     echo '<td>';
-    echo "<a href='"."faktury.php". "?nr_zaangazowania=" . $linia['id_z'] . "&realizacja=" . $linia['realizacja'] . "'>Szczegóły</a>";
+    echo "<a href='"."faktury.php". "?nr_zaangazowania=" . $linia['id_z'] . "&realizacja=" . $linia['realizacja'] . "&plan=" . $linia['kwota'] . "'>Szczegóły</a>";
     echo '</td>';
 
 echo "</tr>";

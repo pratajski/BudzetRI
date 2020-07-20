@@ -117,7 +117,9 @@ echo "Błąd: " . $polaczenie->connect_errno;
 	$nazwa = trim($_POST['nazwa_dostawcy']);
 	$opis = trim($_POST['nowy_opis_faktury']);
     $tytul_platnosci = trim($_POST['tytul_platnosci']);
-	$nazwa = htmlentities($nazwa, ENT_QUOTES, "utf-8");//czyszczenie logina ze znaków specjalnych
+    //$rok = date('Y', $_POST['termin_platnosci']); //faktura przypisana do planu na podstawie terminu płatności
+	$rok = explode("-", $_POST['termin_platnosci']);
+    $nazwa = htmlentities($nazwa, ENT_QUOTES, "utf-8");//czyszczenie logina ze znaków specjalnych
 	$opis = htmlentities($opis, ENT_QUOTES, "utf-8");//czyszczenie hasła ze znaków specjalnych
     $tytul_platnosci = htmlentities($tytul_platnosci, ENT_QUOTES, "utf-8");//czyszczenie tytulu płatności ze znaków specjalnych
     $kwota = str_replace(",",".",$_POST['kwota_faktury']);
@@ -134,14 +136,20 @@ $query  = "insert into zakupy (dostawca, tytul, kwota, numer, zaangazowanie, wpl
     . $_POST['termin_platnosci'] . "', '"
     . $opis . "');";
 $query .= "update zaangazowanie set realizacja = '$zrealizowane' where id_z='$nr_zaangazowania';";
+$query .= "update srodki set wydane = wydane + '$kwota' where id_paragrafu = (select z_paragraf from zaangazowanie where id_z='$nr_zaangazowania') and rok='$rok[0]';";
 
     
 $polaczenie->multi_query($query);    
     
 
 $polaczenie->close();        
-header('Location: lista.php');
-exit();
+//header('Location: lista.php');
+//exit();
+    
+echo "id_z = " . $nr_zaangazowania . "<br>";
+echo "kwota = " . $kwota  . "<br>";
+echo "TERMIN płatności = " . $_POST['termin_platnosci'] . "<br>";
+echo "rok = " . $rok[0];
 
 }// koniec elsa z zapytaniem po podłączeniu do bazy
 

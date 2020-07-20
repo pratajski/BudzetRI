@@ -38,12 +38,11 @@ include ("naglowek.php");
 ?>	
 <br />
  <br /><br />
-<h1>Zrobić listę</h1> 
-<h1>Dodać edycję wraz z liczeniem kosztów realizacji dla wielu faktur</h1>
-
  <h1>Lista faktur z danego zaangażowania</h1>
+
  
  <?php
+
 if (isset($_GET['nr_zaangazowania']))
 {
     //$_SESSION['nr_zaangazowania']=$_GET['nr_zaangazowania'];
@@ -60,9 +59,6 @@ if (isset($_GET['nr_zaangazowania']))
 ?>
  
  
- 
-
-
 <?php
 
 require_once ('baza.php');
@@ -79,17 +75,12 @@ echo "Błąd: " . $polaczenie->connect_errno;
     );
         
     
-    
-    
-
-
 }//koniec ifa z zapytaniif(mysqli_num_rows($wynik) > 0) {
     /* jeżeli wynik jest pozytywny, to wyświetlamy dane */
 if(mysqli_num_rows($sql_lista_faktur) > 0) {
     /* jeżeli wynik jest pozytywny, to wyświetlamy dane */
     
-    
-    
+
     echo "<div >";
     echo '<table id="lista_zaangazowan">';
 
@@ -104,24 +95,9 @@ if(mysqli_num_rows($sql_lista_faktur) > 0) {
 //        echo "<td>Szczegóły</td>";
 
     echo "</tr>";
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+$suma_wydatkow = 0;
+ 
 
 foreach($sql_lista_faktur as $linia)
 
@@ -136,6 +112,7 @@ foreach($sql_lista_faktur as $linia)
     echo '</td>';
     echo '<td>';
     echo ($linia['kwota']);
+    
     echo '</td>';
     echo '<td>';
     echo ($linia['numer']);
@@ -151,13 +128,20 @@ foreach($sql_lista_faktur as $linia)
     echo '</td>';
     
     echo "</tr>";
-
+$suma_wydatkow += $linia['kwota'];
 
 }
 }else{
     echo "<h3>Brak faktur</h3>";
 }
 
+echo "<h2>";
+echo "Zaplanowano " . $_GET['plan'] . ", Wydano " . $suma_wydatkow;
+echo "</h2>";
+
+//echo "Pozostało " . $_GET['plan'] - $suma_wydatkow;
+    
+echo "</h2>";   
 
 //  echo "<a href='"."faktury.php". "?nr_zaangazowania=" . $linia['id'] . "'>Szczegóły</a>";
 
@@ -171,13 +155,9 @@ if (isset($_GET['nr_zaangazowania'])) {
     echo "<button onclick=" . '"' . 'window.location.href=' . "'"   . '/nowa_faktura.php?nr_zaangazowania='. $_GET['nr_zaangazowania'] . '&realizacja=' . $_GET['realizacja'] . "'" . '"' .  '>Dodaj fakturę</button>';
 }
     
-    
 
 
 ?>
-
-
-
 
 <br />
 <?php include ("stopka.php"); ?>
