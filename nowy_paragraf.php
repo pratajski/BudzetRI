@@ -56,11 +56,7 @@ Punkt:<br />
 <?php 
 	echo '<input type="number" name="nowy_punkt_paragrafu"><br /><br />';
 ?>                                                                                                                                                   
-                                                  
-                                                  
-
-                                                  
-                                                                                                                                                      
+                                                                                                                                                            
 	Opis: <br />
 <?php 
     echo '<textarea name="nowy_opis_paragrafu" cols="20" rows="5"></textarea><br /><br />';
@@ -76,9 +72,8 @@ if (!isset($_POST['nowy_opis_paragrafu'])) {
 </form>
 </div>
 
-
-
 <?php
+$rok = date("Y");    
 if (   (isset($_POST['nowa_nazwa_paragrafu']) and ($_POST['nowa_nazwa_paragrafu'] != NULL)) 
     and (isset($_POST['nowy_dzial_paragrafu']) and ($_POST['nowy_dzial_paragrafu'] != NULL)) 
     and (isset($_POST['nowy_rozdzial_paragrafu']) and ($_POST['nowy_rozdzial_paragrafu'] != NULL)) 
@@ -109,16 +104,22 @@ echo "Błąd: " . $polaczenie->connect_errno;
 //sprawdzenie czy istnieje już dodawany punkt
 $ile_paragrafow = $wynik->num_rows;
 	if ($ile_paragrafow==0) {		
-		$sql_paragraf = "INSERT INTO paragrafy (nazwa, komentarz, dzial, rozdzial, paragraf, punkt, dodajacy_paragraf) VALUES (" 
+    $sql_paragraf = "INSERT INTO paragrafy (nazwa, komentarz, dzial, rozdzial, paragraf, punkt, dodajacy_paragraf) VALUES (" 
     . "'" . $nazwa . "', " 	
     . "'".$opis . "', " 
     . "'" . $_POST['nowy_dzial_paragrafu'] . "', " 
     . "'" . $_POST['nowy_rozdzial_paragrafu'] . "', " 
     . "'" . $_POST['nowy_paragraf_paragrafu'] . "', " 
     . "'" . $_POST['nowy_punkt_paragrafu'] . "', " 
-    . "'" . $_SESSION['user'] . "')";
+    . "'" . $_SESSION['user'] . "');";
+    $sql_paragraf .= "INSERT INTO srodki (id_paragrafu, rok) values ((select id from paragrafy where "
+    . "dzial = " . $_POST['nowy_dzial_paragrafu'] . " and " 
+    . "rozdzial = " . $_POST['nowy_rozdzial_paragrafu'] . " and "  
+    . "paragraf = " . $_POST['nowy_paragraf_paragrafu'] . " and " 
+    . "punkt = " . $_POST['nowy_punkt_paragrafu'] . "), "
+    . $rok . ");";
 
-	if ($polaczenie->query($sql_paragraf) === TRUE) {
+	if ($polaczenie->multi_query($sql_paragraf) === TRUE) {
 	    echo "Pomyślnie dodano paragraf" . "<br />";
 		} else 
 		{
@@ -131,24 +132,8 @@ $ile_paragrafow = $wynik->num_rows;
         
     }
        
-       
-       
-       
-       
 	} //koniec ifa z zapytaniem 
     
-    
-    
-    
-  
-    
-    
-
-
-
-		
-
-
 
 $polaczenie->close(); 
 
@@ -164,31 +149,9 @@ unset ($_POST['nowy_punkt_paragrafu']);
 unset ($_POST['nowa_nazwa_paragrafu']);
 unset ($_POST['nowy_opis_paragrafu']);
 unset ($ile_paragrafow);
-
     
-//else
-//{
-	////if (($_POST['nowa_nazwa_paragrafu'] != NULL) or ($_POST["nowy_dzial_paragrafu"]!= NULL) or ($_POST["nowy_rozdzial_paragrafu"]!= NULL) or ($_POST["nowy_paragraf_paragrafu"]!= NULL) or ($_POST["nowy_punkt_paragrafu"]!= NULL)) {
-//		echo "Podaj wszystkie dane zadania"; 
-//	}
-//echo "<br/ >";
-//}
-
-
-
-
-
-
-
-
 ?>
-
-
+<br />
 <br />
 
-
-
-
-
-<br />
 <?php include ("stopka.php"); ?>

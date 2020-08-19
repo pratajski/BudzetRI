@@ -1,7 +1,5 @@
 <?php
 session_start();
-//$_SESSION['user'] = "admin";
-//puścić jak będzie działać
 if (!isset($_SESSION['zalogowany'])) { //sprawdzenie czy ktoś jest zalogowany
 	header('Location: index.php');
 	exit();
@@ -51,18 +49,15 @@ if (isset($_GET['nr_zaangazowania']))
     if (isset($_GET['nr_zaangazowania'])){ //istnieje get nr zaangazowania, mozna wiec wyswietlic dane
         $zaangazowanie = $_GET['nr_zaangazowania'];    
     }else{//nie istnieje nr zaangazowania wiec wracamy do strony listą
-        echo "na koniec prac puscic przejscie do wyboru zaangazowania gdy nie zostalo ono okreslone";
-     //   header('Location: lista.php');
-     //   exit();
+     //   echo "na koniec prac puscic przejscie do wyboru zaangazowania gdy nie zostalo ono okreslone";
+        header('Location: lista.php');
+        exit();
     }
-
 ?>
  
  
 <?php
-
 require_once ('baza.php');
-
 //lączenie z bazą
 $polaczenie = @new mysqli($host, $user, $password, $db);//próba podłączenia do bazy z ignorowaniem komunikatów o błędach
 
@@ -96,14 +91,11 @@ if(mysqli_num_rows($sql_lista_faktur) > 0) {
 
     echo "</tr>";
 
-$suma_wydatkow = 0;
- 
+$suma_wydatkow = 0; 
 
 foreach($sql_lista_faktur as $linia)
-
 {
-    echo "<tr>";
-    
+    echo "<tr>";    
     echo '<td>';
     echo ($linia['dostawca']);
     echo '</td>';
@@ -111,8 +103,7 @@ foreach($sql_lista_faktur as $linia)
     echo ($linia['tytul']);
     echo '</td>';
     echo '<td>';
-    echo ($linia['kwota']);
-    
+    echo ($linia['kwota']);    
     echo '</td>';
     echo '<td>';
     echo ($linia['numer']);
@@ -125,8 +116,7 @@ foreach($sql_lista_faktur as $linia)
     echo '</td>';
     echo '<td>';
     echo ($linia['opis']);
-    echo '</td>';
-    
+    echo '</td>';    
     echo "</tr>";
 $suma_wydatkow += $linia['kwota'];
 
@@ -136,28 +126,20 @@ $suma_wydatkow += $linia['kwota'];
 }
 
 echo "<h2>";
-echo "Zaplanowano " . $_GET['plan'] . ", Wydano " . $suma_wydatkow;
-echo "</h2>";
+if (isset($_GET['plan'])) {
+    echo "Zaplanowano " . $_GET['plan'] . ", Wydano " . $suma_wydatkow;
+}
 
-//echo "Pozostało " . $_GET['plan'] - $suma_wydatkow;
-    
-echo "</h2>";   
-
-//  echo "<a href='"."faktury.php". "?nr_zaangazowania=" . $linia['id'] . "'>Szczegóły</a>";
-
-
+echo "</h2>";    
     echo "</table>";
     echo "</div>";
-
 echo "<br />";
 
 if (isset($_GET['nr_zaangazowania'])) {
     echo "<button onclick=" . '"' . 'window.location.href=' . "'"   . '/nowa_faktura.php?nr_zaangazowania='. $_GET['nr_zaangazowania'] . '&realizacja=' . $_GET['realizacja'] . "'" . '"' .  '>Dodaj fakturę</button>';
-}
-    
+}    
 
 
 ?>
-
 <br />
 <?php include ("stopka.php"); ?>

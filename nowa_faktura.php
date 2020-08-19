@@ -94,8 +94,6 @@ if (!isset($_POST['termin_platnosci'])) {
 </form>
 </div>
 
-
-
 <?php
 
 if (   (isset($_POST['nazwa_dostawcy']) and ($_POST['nazwa_dostawcy'] != NULL)) 
@@ -169,15 +167,9 @@ else
         }
 }
 
-
 ?>
 
-
 <br />
-
- 
-
-
 
 <br />
 <?php include ("stopka.php"); ?>

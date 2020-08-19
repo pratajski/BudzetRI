@@ -21,9 +21,6 @@ include ("naglowek.php");
 ?>	
 </div>
 
-
-
-
 <br />
 <h1>dodać sortowanie paragrafów</h1>
 <br />
@@ -61,42 +58,37 @@ echo "<tr>";
     echo "<td>Wybierz</td>";
 echo "</tr>";
 
-
 foreach($wynik as $linia)
 {    
- 	echo "<tr>";
-    
+ 	echo "<tr>";    
     echo '<td>';
- echo ($linia['nazwa']);
+    echo ($linia['nazwa']);
     echo '</td>';
     
     echo '<td>';
- echo ($linia['dzial']);
+    echo ($linia['dzial']);
+    echo '</td>';    
+    
+    echo '<td>';
+    echo ($linia['rozdzial']); 
+    echo '</td>';    
+    
+    echo '<td>';
+    echo ($linia['paragraf']);
+    echo '</td>';    
+    
+    echo '<td>';
+    echo ($linia['punkt']); 
+    echo '</td>';    
+    
+    echo '<td>';
+    echo ($linia['komentarz']); 
     echo '</td>';
     
-    
     echo '<td>';
-echo ($linia['rozdzial']); 
-    echo '</td>';    
-    
-    echo '<td>';
- echo ($linia['paragraf']);
-    echo '</td>';    
-    
-    echo '<td>';
-echo ($linia['punkt']); 
-    echo '</td>';    
-    
-    echo '<td>';
-echo ($linia['komentarz']); 
-    echo '</td>';
-    
-        echo '<td>';
-echo "<a href='"."dodaj_zaangazowanie.php". "?paragraf=" . $linia['id'] . "'>Dodaj zaangażowanie</a>";; 
+    echo "<a href='"."dodaj_zaangazowanie.php". "?paragraf=" . $linia['id'] . "'>Dodaj zaangażowanie</a>";; 
     echo '</td>';   
-    
-
-
+ 
 }
     
 }else{
@@ -105,29 +97,13 @@ echo "<a href='"."dodaj_zaangazowanie.php". "?paragraf=" . $linia['id'] . "'>Dod
 }
 
 echo "</table>";
-	
-
 	$wynik->free_result(); //czyszczenie zapytania SQL
-		
-	
 	} //koniec ifa z zapytaniem
-
 
 	$polaczenie->close();
 } //zamknięie elsa podłączenia do bazy
 
-
-
-
-//===========================================================================
 ?>
 
-
 <br />
-<?php include ("stopka.php"); ?>	
-<!-- zakończenie stopki -->
-<!-- 
-	<tr>
-		<td><?php   ; ?></td>	<td><?php ; ?></td>	<td>Zmie</td>
-	</tr>
-	 -->
+<?php include ("stopka.php"); ?>
