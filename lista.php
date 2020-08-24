@@ -56,7 +56,9 @@ include ("naglowek.php");
 <tr>
     <td>Data zakończenia:</td><td><input type="text" name="koniec" id="koniec"></td>
 </tr>
-
+<tr>
+    <td>Paragraf:</td><td><input type="number" name="paragraf" id="paragraf"></td>
+</tr>
 <tr>
     <td></td><td><input type="submit" value="Zatwierdź wybór"></td>
 </tr>
@@ -64,9 +66,6 @@ include ("naglowek.php");
 
 </form><br />
 
-<br />
-<h1>dodać sortowanie po paragrafie</h1>
-<br />
 Lista zaangażowań:<br />
 <div >
 <table id="lista_zaangazowan">
@@ -156,17 +155,23 @@ if ($wybor == 'nazwa_m') {
     $sortownia = 'nazwa'; //sortowanie po nazwie projektu
     $kolejnosc = 'DESC'; // sortowanie malejące
 }
-
+    
+if (!isset($_POST['paragraf']) or ($_POST['paragraf'] == '')) {
+    $numer_paragrafu = "%";
+} else {
+    $numer_paragrafu = trim($_POST['paragraf']) ;
+	$numer_paragrafu = htmlentities($numer_paragrafu, ENT_QUOTES, "utf-8");//czyszczenie ze znaków specjalnych
+}  
 
 $polaczenie = @new mysqli($host, $user, $password, $db);//próba podłączenia do bazy z ignorowaniem komunikatów o błędach
 
 $wynik = @$polaczenie->query(
     "SELECT * FROM zaangazowanie 
      LEFT JOIN paragrafy ON zaangazowanie.z_paragraf = paragrafy.id
-    WHERE zaangazowanie.poczatek >= date('$d_start') AND zaangazowanie.koniec <= date('$d_koniec')
+    WHERE zaangazowanie.poczatek >= date('$d_start') AND zaangazowanie.koniec <= date('$d_koniec')  
+    AND paragraf like \"$numer_paragrafu\"    
     order by $sortownia $kolejnosc"
-    ); 
-
+    );
 
 if(mysqli_num_rows($wynik) > 0) {
     /* jeżeli wynik jest pozytywny, to wyświetlamy dane */
@@ -174,23 +179,6 @@ if(mysqli_num_rows($wynik) > 0) {
 foreach($wynik as $linia)
 
 {
-  /*  echo "<tr>";
-    echo '<td>';
-    echo ($linia['nazwa']);
-    echo '</td>';
-    echo '<td>';
-    echo ($linia['projekt_opis']);
-    echo '</td>';
-    echo '<td>';
-    echo ($linia['poczatek']);
-    echo '</td>';
-    echo '<td>';
-    echo ($linia['koniec']);
-    echo '</td>';
-    echo '<td>';
-    echo ($linia['szef']);    
-    echo '</td>';*/
-    
     echo "<tr>";
     echo '<td>';
     echo ($linia['nazwa_zaangazowania']);
@@ -219,26 +207,18 @@ foreach($wynik as $linia)
 
 echo "</tr>";
 
-
 }
 }
 
 ?>
 
 </table></div>
-<?php 
-
+<?php
 $d_start = '2000-01-01';
 $d_koniec = '2100-12-31';
-
- ?> 
-
+?>
 
 <br />
-
-
-
-
 
 <!-- początek stopki -->
 <br />
