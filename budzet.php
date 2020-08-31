@@ -126,7 +126,7 @@ $suma_wydatkow = 0;
         
  //   }
 
-echo '<table id="srodki_budzetowe">';
+echo '<table id="tabela">';
 
 echo "<tr>";
     

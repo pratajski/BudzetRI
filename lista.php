@@ -12,7 +12,6 @@ if (!isset($_SESSION['zalogowany'])) { //sprawdzenie czy ktoś jest zalogowany
     <title>Zaangażowania</title>
     <meta charset="utf-8">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script>
@@ -68,7 +67,7 @@ include ("naglowek.php");
 
 Lista zaangażowań:<br />
 <div >
-<table id="lista_zaangazowan">
+<table id="tabela">
 
 <tr>
     <td>
@@ -95,9 +94,7 @@ Lista zaangażowań:<br />
     <td>
     Szczegóły
     </td>
-
 </tr>
-
 
 <?php
 require_once ('baza.php');
@@ -118,7 +115,6 @@ if ((!isset($_POST['start'])) or ($_POST['start'])=="") {
 else
 {
     $d_start = $_POST['start'];
-
 }
 
 if ((!isset($_POST['koniec'])) or ($_POST['koniec'])=="") {

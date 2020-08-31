@@ -35,14 +35,20 @@ body
 #tabela
 {
 	border-style: solid;
-	border-color: #666;
+	border-color: #800;
 
 }
 #tabela td 
 {
 	border-style: solid;
 	text-align: center;
-	border-color: #666;
+}
+
+#tabela th 
+{
+	border-style: solid;
+	text-align: center;
+    background: #cde;
 }
 
 

@@ -40,7 +40,7 @@ include ("naglowek.php");
 
  
  <?php
-
+$suma_wydatkow = 0; 
 if (isset($_GET['nr_zaangazowania']))
 {
     //$_SESSION['nr_zaangazowania']=$_GET['nr_zaangazowania'];
@@ -77,7 +77,7 @@ if(mysqli_num_rows($sql_lista_faktur) > 0) {
     
 
     echo "<div >";
-    echo '<table id="lista_zaangazowan">';
+    echo '<table id="tabela">';
 
     echo "<tr>";
         echo "<td>Dostawca</td>";
@@ -91,7 +91,7 @@ if(mysqli_num_rows($sql_lista_faktur) > 0) {
 
     echo "</tr>";
 
-$suma_wydatkow = 0; 
+
 
 foreach($sql_lista_faktur as $linia)
 {

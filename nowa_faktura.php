@@ -141,13 +141,8 @@ $polaczenie->multi_query($query);
     
 
 $polaczenie->close();        
-//header('Location: lista.php');
-//exit();
-    
-echo "id_z = " . $nr_zaangazowania . "<br>";
-echo "kwota = " . $kwota  . "<br>";
-echo "TERMIN płatności = " . $_POST['termin_platnosci'] . "<br>";
-echo "rok = " . $rok[0];
+header('Location: lista.php');
+exit();
 
 }// koniec elsa z zapytaniem po podłączeniu do bazy
 

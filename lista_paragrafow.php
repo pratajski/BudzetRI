@@ -46,7 +46,7 @@ if ($wynik = @$polaczenie->query("select * from paragrafy"))
     
 if(mysqli_num_rows($wynik) > 0) {
     /* jeżeli wynik jest pozytywny, to wyświetlamy dane */
-echo "<table>";
+echo "<table id='tabela'>";
 echo "<tr>";
     
     echo "<td>Nazwa paragrafu</td>";
