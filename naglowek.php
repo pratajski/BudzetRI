@@ -1,16 +1,10 @@
-<table>
-	<tr>
-		<td>Twój login:</td><td><?php echo $_SESSION['user']; ?></td>
-		<td><a href="lista.php">Zaangażowania</a></td>
-		<td><a href="lista_paragrafow.php">Lista paragrafów</a></td>
-		<td><a href="nowy_paragraf.php">Nowy paragraf</a></td>
-		<td><a href="budzet.php">Budżet</a></td>
-		<!-- <td><a href="faktury.php">Lista faktur</a></td> -->
-		<td><a href="moja.php">Moje dane</a></td>		
-		<td><a href="koniec.php">Wyloguj się</a></td>
-	</tr>
-</table>
-<br />
-
-
-
+Twój login: <?php echo $_SESSION['user']; ?> 
+<ul>
+    <li><a href="lista.php">Zaangażowania</a></li>
+    <li><a href="lista_paragrafow.php">Lista paragrafów</a></li>
+    <li><a href="nowy_paragraf.php">Nowy paragraf</a></li>
+    <li><a href="budzet.php">Budżet</a></li>
+    <li><a href="moja.php">Moje dane</a></li>
+    <li><a href="koniec.php">Wyloguj się</a></li>
+</ul>
+<br /><br /><br /><br /><br />
