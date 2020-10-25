@@ -67,32 +67,32 @@ include ("naglowek.php");
 
 Lista zaangażowań:<br />
 <div >
-<table id="tabela">
+<table class="tabela">
 
 <tr>
     <td>
-    Nazwa
+    <h3>Nazwa</h3>
     </td>
     <td>
-    Kwota zaangażowania
+    <h3>Kwota zaangażowania</h3>
     </td>
     <td>
-    Data rozpoczęcia
+    <h3>Data rozpoczęcia</h3>
     </td>
     <td>
-    Data zakończenia
+    <h3>Data zakończenia</h3>
     </td>
     <td>
-    Zrealizowano
+    <h3>Zrealizowano</h3>
     </td>
     <td>
-    Opis
+    <h3>Opis</h3>
     </td>
     <td>
-    Paragraf
+   <h3>Paragraf</h3>
     </td>
     <td>
-    Szczegóły
+    <h3>Szczegóły</h3>
     </td>
 </tr>
 

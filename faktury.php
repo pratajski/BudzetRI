@@ -11,10 +11,12 @@ if (!isset($_SESSION['zalogowany'])) { //sprawdzenie czy ktoś jest zalogowany
 <head>
 	<title>Lista faktur</title>
 	<meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="css/styl.css">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  
   <script>
   $( function() {
     $( "#start" ).datepicker({ dateFormat: 'yy-mm-dd' });
@@ -77,7 +79,7 @@ if(mysqli_num_rows($sql_lista_faktur) > 0) {
     
 
     echo "<div >";
-    echo '<table id="tabela">';
+    echo '<table class="tabela">';
 
     echo "<tr>";
         echo "<td>Dostawca</td>";

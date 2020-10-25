@@ -46,16 +46,15 @@ if ($wynik = @$polaczenie->query("select * from paragrafy"))
     
 if(mysqli_num_rows($wynik) > 0) {
     /* jeżeli wynik jest pozytywny, to wyświetlamy dane */
-echo "<table id='tabela'>";
-echo "<tr>";
-    
-    echo "<td>Nazwa paragrafu</td>";
-    echo "<td>Dział</td>";
-    echo "<td>Rozdział</td>";
-    echo "<td>Paragraf</td>";
-    echo "<td>Punkt</td>";
-    echo "<td>Komentarz</td>";
-    echo "<td>Wybierz</td>";
+echo "<table class='tabela'>";
+echo "<tr>";    
+    echo "<td><h3>Nazwa paragrafu</h3></td>";
+    echo "<td><h3>Dział</h3></td>";
+    echo "<td><h3>Rozdział</h3></td>";
+    echo "<td><h3>Paragraf</h3></td>";
+    echo "<td><h3>Punkt</h3></td>";
+    echo "<td><h3>Komentarz</h3></td>";
+    echo "<td><h3>Wybierz</h3></td>";
 echo "</tr>";
 
 foreach($wynik as $linia)

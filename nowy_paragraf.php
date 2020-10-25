@@ -68,7 +68,7 @@ if (!isset($_POST['nowy_opis_paragrafu'])) {
  
 	<input type="reset" value="Skasuj" /> 
 	<p></p>
-	<input type="submit" value="Dodaj paragraf"/>
+	<input type="submit" value="Dodaj"/>
 </form>
 </div>
 

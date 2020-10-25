@@ -126,28 +126,28 @@ $suma_wydatkow = 0;
         
  //   }
 
-echo '<table id="tabela">';
+echo '<table class="tabela">';
 
 echo "<tr>";
     
-    echo "<td>";
+    echo "<td><h3>";
     echo "Nazwa";
-    echo "</td>";
-    echo "<td>";
+    echo "</h3></td>";
+    echo "<td><h3>";
     echo "Rok";
-    echo "</td>";
-    echo "<td>";
+    echo "</h3></td>";
+    echo "<td><h3>";
     echo "Paragraf";
-    echo "</td>";
-    echo "<td>";
+    echo "</h3></td>";
+    echo "<td><h3>";
     echo "Zaplanowano";
-    echo "</td>";
-    echo "<td>";
+    echo "</h3></td>";
+    echo "<td><h3>";
     echo "Wydano";
-    echo "</td>";
-    echo "<td>";
+    echo "</h3></td>";
+    echo "<td><h3>";
     echo "Zmień";
-    echo "</td>";
+    echo "</h3></td>";
 
 echo "</tr>";
 
